@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.project.mapper.AReviewMapper">
+  
+  <insert id="insert">
+  	INSERT INTO b_areview(id, content, regdate, anum) VALUES(#{id}, #{content}, now(), #{anum})
+  </insert>
+  
+  <select id="getList" resultType="com.project.dto.AReview">
+  	SELECT * FROM b_areview WHERE anum=#{anum}
+  </select>
+  
+  <delete id="delete">
+  	DELETE FROM b_areview WHERE rnum=#{rnum}
+  </delete>
+  
+  <select id="read" resultType="com.project.dto.AReview">
+  	SELECT * FROM b_areview WHERE rnum=#{rnum}
+  </select>
+  
+ </mapper>

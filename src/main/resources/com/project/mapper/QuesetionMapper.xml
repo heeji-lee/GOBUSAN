@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.project.mapper.QuesetionMapper">
+  
+	<sql id="search">
+	<where>
+	<if test="word!=null and field =='name'">
+	name like CONCAT('%',#{word},'%')
+	</if>
+	</where>
+	</sql>
+
+	<!-- 추가 -->
+	<insert id="insert">
+	  INSERT INTO b_quesetion(name, email, title, content, qimg, regdate) VALUES(#{name}, #{email}, #{title}, #{content}, #{qimg}, now())
+	</insert>
+	
+	<!-- 전체보기 -->
+	<select id="findAll" resultType="com.project.dto.Quesetion">
+	  SELECT * FROM b_quesetion 
+	  <include refid="search"/>
+	  ORDER BY qnum LIMIT #{startRow}, #{pageSize}
+	</select>
+	
+	<!-- counter -->
+	<select id="count" resultType="integer">
+	  SELECT COUNT(*) FROM b_quesetion
+	  <include refid="search"/>
+	</select>
+	
+	<!-- 상세보기 -->
+	<select id="findByNum" resultType="com.project.dto.Quesetion">
+	  SELECT * FROM b_quesetion WHERE qnum=#{qnum}
+	</select>
+	
+	<!-- 삭제 -->
+	<delete id="delete">
+	  DELETE FROM b_quesetion WHERE qnum=#{qnum}
+	</delete>
+  
+  </mapper>

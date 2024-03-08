@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.project.mapper.FestivalMapper">
+  
+	<sql id="search">
+	<where>
+	<if test="word!=null and field =='title'">
+	title like CONCAT('%',#{word},'%')
+	</if>
+	<if test="word!=null and field =='writer'">
+	writer like CONCAT('%',#{word},'%')
+	</if>
+	</where>
+	</sql>
+
+	<!-- 추가 -->
+	<insert id="insert">
+	  INSERT INTO b_festival(fimg, title, p, content1, content2, writer, regdate) VALUES(#{fimg}, #{title}, #{p}, #{content1}, #{content2}, #{writer}, now())
+	</insert>
+	
+	<!-- 전체보기 -->
+	<select id="findAll" resultType="com.project.dto.Festival">
+	  SELECT * FROM b_festival
+	  <include refid="search"/>
+	  ORDER BY num DESC LIMIT #{startRow}, #{pageSize}
+	</select>
+	
+	<!-- counter -->
+	<select id="count" resultType="integer">
+	  SELECT COUNT(*) FROM b_festival
+	  <include refid="search"/>
+	</select>
+	
+	<!-- 조회수 -->
+	<update id="hitCount">
+	  UPDATE b_festival SET hitcount=hitcount+1 WHERE num=#{num}
+	</update>
+	
+	<!-- 상세보기 -->
+	<select id="findByNum" resultType="com.project.dto.Festival">
+	  SELECT * FROM b_festival WHERE num=#{num}
+	</select>
+	
+	<!-- reply count 1증가 -->
+	<update id="updateReplyCnt">
+	  UPDATE b_festival SET replyCnt=replyCnt+#{amount} WHERE num=#{fnum}
+	</update>
+	
+	<!-- 수정 -->
+	<update id="update">
+	  UPDATE b_festival SET writer=#{writer}, title=#{title}, p=#{p}, content1=#{content1}, content2=#{content2} where num=#{num}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="delete">
+	  DELETE FROM b_festival WHERE num=#{num}
+	</delete>
+    
+  </mapper>

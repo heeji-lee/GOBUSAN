@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.project.mapper.MemberMapper">
+  	
+  	<sql id="search">
+	<where>
+	<if test="word!=null and field =='id'">
+	id like CONCAT('%',#{word},'%')
+	</if>
+	</where>
+	</sql>
+  	
+  	<!-- 전체보기 -->
+	<select id="findAll" resultType="com.project.dto.Member">
+	  SELECT * FROM b_member 
+	  <include refid="search"/>
+	  ORDER BY id LIMIT #{startRow}, #{pageSize}
+	</select>
+	
+	<!-- counter -->
+  	<select id="count" resultType="integer">
+	  SELECT COUNT(*) FROM b_member
+	  <include refid="search"/>
+	</select>
+  	
+  	<!-- 추가 -->
+  	<insert id="mInsert">
+  	  INSERT INTO b_member(id, pwd, gender, addr, tel, email) VALUES(#{id}, #{pwd}, #{gender}, #{addr}, #{tel}, #{email})
+  	</insert>
+  	
+  	<!-- 상세보기, 아이디 중복확인, 로그인체크 -->
+  	<select id="mfindById" resultType="com.project.dto.Member">
+  	  SELECT * FROM b_member WHERE id=#{id}
+  	</select>
+  	
+  	<!-- 수정 -->
+	<update id="mUpdate">
+  	  UPDATE b_member SET pwd=#{pwd}, gender=#{gender}, addr=#{addr}, tel=#{tel}, email=#{email} WHERE id=#{id}
+	</update>
+  	
+  	<!-- 탈퇴 -->
+  	<delete id="mDelete">
+  	  DELETE FROM b_member WHERE id=#{id}
+  	</delete>
+  	
+  </mapper>

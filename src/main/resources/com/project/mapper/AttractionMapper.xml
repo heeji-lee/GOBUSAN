@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.project.mapper.AttractionMapper">
+  
+	<sql id="search">
+	<where>
+	<if test="word!=null and field =='title'">
+	title like CONCAT('%',#{word},'%')
+	</if>
+	<if test="word!=null and field =='writer'">
+	writer like CONCAT('%',#{word},'%')
+	</if>
+	</where>
+	</sql>
+
+	<!-- 추가 -->
+	<insert id="insert">
+	  INSERT INTO b_attraction(aimg, title, p, content, writer, regdate) VALUES(#{aimg}, #{title}, #{p}, #{content}, #{writer}, now())
+	</insert>
+	
+	<!-- 전체보기 -->
+	<select id="findAll" resultType="com.project.dto.Attraction">
+	  SELECT * FROM b_attraction 
+	  <include refid="search"/>
+	  ORDER BY num DESC LIMIT #{startRow}, #{pageSize}
+	</select>
+	
+	<!-- counter -->
+	<select id="count" resultType="integer">
+	  SELECT COUNT(*) FROM b_attraction
+	  <include refid="search"/>
+	</select>
+	
+	<!-- 조회수 -->
+	<update id="hitCount">
+	  UPDATE b_attraction SET hitcount=hitcount+1 WHERE num=#{num}
+	</update>
+	
+	<!-- 상세보기 -->
+	<select id="findByNum" resultType="com.project.dto.Attraction">
+	  SELECT * FROM b_attraction WHERE num=#{num}
+	</select>
+	
+	<!-- reply count 1증가 -->
+	<update id="updateReplyCnt">
+	  UPDATE b_attraction SET replyCnt=replyCnt+#{amount} WHERE num=#{anum}
+	</update>
+	
+	<!-- 수정 -->
+	<update id="update">
+	  UPDATE b_attraction SET writer=#{writer}, title=#{title}, p=#{p}, content=#{content} where num=#{num}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="delete">
+	  DELETE FROM b_attraction WHERE num=#{num}
+	</delete>
+	
+  </mapper>
