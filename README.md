@@ -23,7 +23,7 @@
 
 ># 프로젝트 기술 스택 💻
 >## ✔️Frontend
->[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1709909050438?alt=media&token=7f56e7a0-73b1-45df-8c1f-8041dc94736b)](https://github.com/msdio/stackticon)
+>[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1709997184068?alt=media&token=b9ea7d04-e918-44c9-893e-507a65ac5469)](https://github.com/msdio/stackticon)
 >## ✔️Backend
 >[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1709908971213?alt=media&token=9a56427d-615f-46e8-85cd-eba8ec395a7b)](https://github.com/msdio/stackticon)
 
@@ -73,11 +73,9 @@
 ### 회원가입, 로그인
 - 사용자는 아이디, 비밀번호, 성별, 주소, 전화번호, 이메일을 이용하여 회원가입할 수 있습니다.
 - 회원가입 시 사용한 아이디와 비밀번호를 이용하여 로그인할 수 있습니다.
-
 ### 축제, 테마, 관광지 목록 및 상세 조회
 - 축제/테마/관광지 카테고리 별 목록을 조회할 수 있습니다.
 - 상세 정보를 조회할 수 있습니다. 상세 정보에는 일정과 교통정보 또는 소개글이 있습니다.
-
 ### 공지사항 확인
 - 공지사항 목록 및 상세 정보을 확인할 수 있습니다.
 
