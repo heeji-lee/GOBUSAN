@@ -25,7 +25,9 @@
 >## ✔️Frontend
 >[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1709997184068?alt=media&token=b9ea7d04-e918-44c9-893e-507a65ac5469)](https://github.com/msdio/stackticon)
 >## ✔️Backend
->[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1709908971213?alt=media&token=9a56427d-615f-46e8-85cd-eba8ec395a7b)](https://github.com/msdio/stackticon)
+>[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1710073029534?alt=media&token=3bc4d79e-20d0-464f-9789-e09ff17aefc3)](https://github.com/msdio/stackticon)
+>## ✔️Database
+>[![stackticon](https://firebasestorage.googleapis.com/v0/b/stackticon-81399.appspot.com/o/images%2F1710073062871?alt=media&token=77694200-4254-4315-be82-41a991959d94)](https://github.com/msdio/stackticon)
 
 >## ERD 구조
 ><img src="https://github.com/heeji-lee/GOBUSAN/assets/73567158/23560dac-0127-422e-a4e0-9af879c1d300"></br>
